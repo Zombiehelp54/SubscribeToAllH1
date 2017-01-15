@@ -24,3 +24,4 @@ function sendXHR(reqType,address){
 		  console.log(e+" don't worry we are still in the loop");
 	  }
   }
+alert("done!");
