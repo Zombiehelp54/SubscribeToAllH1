@@ -15,6 +15,7 @@ function sendXHR(reqType,address, asyncProc){
 	sendSub = sendXHR("PATCH",programs[i]+"/policy_subscriptions");
 	if(sendSub.status != 200) {
 		for(x=429;x != 200 ;x=sendXHR("PATCH",programs[i]+"/policy_subscriptions").status){} // Keep repeating the request untill we are out of rate limit :D
+		sendSub = sendXHR("PATCH",programs[i]+"/policy_subscriptions");
 	}
    sub = JSON.parse(sendSub.responseText);
    (sub.subscription == false) ? sendXHR("PATCH",programs[i]+"/policy_subscriptions"): 1;
