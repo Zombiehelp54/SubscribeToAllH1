@@ -1,4 +1,4 @@
-function sendXHR(reqType,address, asyncProc){
+function sendXHR(reqType,address){
    var r = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
    r.open(reqType, address, false);
    (reqType == "PATCH" ? r.setRequestHeader("X-CSRF-Token", current_user.get("csrf_token")) : 1)
