@@ -6,7 +6,7 @@ function sendXHR(reqType,address, asyncProc){
    return r;
   }
   var programs = new Array();
-  var pros = JSON.parse(sendXHR("GET","/programs/search.json?query=type%3Ahackerone&sort=published_at%3Adescending&page=1").responseText);
+  var pros = JSON.parse(sendXHR("GET","/programs/search.json?query=type%3Ahackerone&sort=published_at%3Adescending&page=1").responseText); // use `page=2` if you have already subscribed for programs in page 1
   for(i=0; i<pros.results.length; i++){
   programs.push(pros.results[i].url);
   }
