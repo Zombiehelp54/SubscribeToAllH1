@@ -13,8 +13,8 @@ function sendXHR(reqType,address){
   for(i=0;i<programs.length;i++){
 	  try {
 	sendSub = sendXHR("PATCH",programs[i]+"/policy_subscriptions");
-	if(sendSub.status != 200) {
-		for(x=429;x != 200 ;x=sendXHR("PATCH",programs[i]+"/policy_subscriptions").status){} // Keep repeating the request untill we are out of rate limit :D
+	if(sendSub.status != 200) { // rate-limit? repeat request or delay the loop.
+		for(x=429;x != 200 ;x=sendXHR("PATCH",programs[i]+"/policy_subscriptions").status){} // Replace the XHR URL with `http://localhost/delay.php` if you want to avoid being stuck in the rate limit request (You'll need to sniff the `content-security-policy` header though in order to allow cross domain requests :( )
 		sendSub = sendXHR("PATCH",programs[i]+"/policy_subscriptions");
 	}
    sub = JSON.parse(sendSub.responseText);
